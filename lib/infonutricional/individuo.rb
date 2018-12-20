@@ -105,10 +105,15 @@ class Paciente < Individuo
         @peso / (@talla * @talla)
     end
     
+    
+    
+    
     # Método que calcula el peso teórico ideal
     def peso_teorico_ideal
       @peso_ideal = ((@talla - 1.50)*100 * 0.75 + 50).round(2)
     end
+    
+    
     
     # Método que calcula el gasto energetico basal según hombres y mujeres
     def gasto_energetico
@@ -118,6 +123,8 @@ class Paciente < Individuo
             @gasto_energ = ((10 * @peso) + (6.25 * @talla * 100) - (5 * @edad) + 5).round(1)
         end
     end
+    
+    
     
     # Método que calcula el efecto termógeno
     def efecto_termogeno
@@ -129,11 +136,11 @@ class Paciente < Individuo
        @gasto_actividad = (@gasto_energ * @factor_act).round(1)
     end
     
-    
     def gasto_energetico_total
         @gasto_energ_total = (@gasto_energ + @efecto_termo + @gasto_actividad).round(1)
     end
     
+
     # Muestra la etiqueta de los individuos formateada
     def to_s
         super
@@ -158,5 +165,4 @@ class Paciente < Individuo
         @out << "\n"
         @out
     end
-    
 end

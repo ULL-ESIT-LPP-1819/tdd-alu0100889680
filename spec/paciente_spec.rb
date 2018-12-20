@@ -317,4 +317,88 @@ RSpec.describe Paciente do
            expect(total_kcal >= gasto_ener_paciente).to eq(true)
         end
     end
+    
+    describe "Menús" do
+        before :all do
+            @crema_chocolate = Etiqueta.new("Crema de chocolate", 30.9,10.6,57.5,56.3,6.3,0.107, 13.3,15)
+            @galletas = Etiqueta.new("Galletas", 25.0,12.0,63.0,29.0,6.3,0.6, 4,40)
+            @arroz = Etiqueta.new("Arroz",1.1,0.3,74.0,0.0,8.4,0.0, 0,0)
+            @pan_molde = Etiqueta.new("Pan de molde",3.4,0.43,45.0,4.6,7.0,1.5, 14,25)
+            @macarrones = Etiqueta.new("Macarrones", 1.9,0.8,71.8,3.5,11.5,0.08,0,0)
+            @atun = Etiqueta.new("Atun", 31.0,4.6,0.9,0.5,19.0,0.9, 6,80)
+            @ketchup = Etiqueta.new("Ketchup", 0.1,0.0,24.8,19.0,1.6,3.3,0,0)
+            
+            @menu1 = [@crema_chocolate,@galletas]
+            @menu2 = [@arroz,@pan_molde,@atun]
+            @menu3 = [@ketchup,@macarrones]
+            @menu4 = [@atun,@macarrones,@crema_chocolate]
+            @menu5 = [@atun,@pan_molde,@galletas]
+            @menu6 = [@crema_chocolate, @galletas, @atun]
+            @menu7 = [@galletas, @macarrones, @pan_molde]
+            @menu8 = [@macarrones, @galletas]
+            @menu9 = [@arroz, @galletas, @pan_molde]
+            @menu10 = [@crema_chocolate, @ketchup, @arroz]
+            
+            @paciente1 = Paciente.new(1, "Natalia", "Gutierrez", 36, "Mujer", "10-12-86", "Cantante", "Si",  1.6, 100.5, 47.5, 56.6, 58.2, 33.7, 80.5, 25.6, 42.3,0)
+            @paciente2 = Paciente.new(2, "Juan Carlos", "Ozuna", 26, "Hombre", "13-03-92", "Panadero", "No",  1.65, 175.5, 73.5, 21.5, 27.5, 13.6, 52.7, 26.8, 90.1,0.12)
+            @paciente3 = Paciente.new(3, "Benito", "Martínez", 24, "Hombre", "10-03-94", "Agricultor", "Si",  1.80, 164.3, 64.0, 15.0, 28.5, 75.6, 68.6, 36.5, 48.7,0.27)
+            @paciente4 = Paciente.new(4, "Rebeca ", "Gomez", 24, "Mujer", "02-03-97", "Pintor", "No",  1.75, 80.5, 37.5, 69.7, 43.3, 40.0, 38.5, 60.5, 33.5,0.54)
+            @paciente5 = Paciente.new(5, "José", "Balvin", 33, "Hombre", "07-05-85", "Profesor", "Si",  1.50, 60.0, 79.4, 78.5, 63.5, 19.4, 50.5, 14.4, 16.2,0)
+            @paciente6 = Paciente.new(6, "Carolina", "Navarro", 27, "Mujer", "14-02-91", "Actor", "No",  1.65, 74.0, 76.5, 65.6, 12.6, 31.4, 77.2, 18.6, 55.5,0.12)
+            @paciente7 = Paciente.new(7, "Sara", "Crespo", 23, "Mujer", "17-08-93", "Feliz", "Si", 1.75, 44.0, 65.5, 25.6,8.6, 90.4, 47.2, 28.6, 45.5, 0.27)
+            @paciente8 = Paciente.new(8, "Daniel", "García", 26, "Hombre", "08-07-98", "Camarero", "No", 1.75, 44.0, 65.5, 25.6,8.6, 90.4, 47.2, 28.6, 45.5, 0.27)
+            @paciente9 = Paciente.new(9, "Sara", "Crespo", 23, "Mujer", "17-08-93", "Feliz", "Si", 1.75, 44.0, 65.5, 25.6,8.6, 90.4, 47.2, 28.6, 45.5, 0.27)
+            @paciente10 = Paciente.new(10, "Sara", "Crespo", 23, "Mujer", "17-08-93", "Feliz", "Si", 1.75, 80.5, 37.5, 69.7, 43.3, 40.0, 38.5, 60.5, 33.5,0.54)
+        
+            @lista1 = Lista.new()
+
+        end
+        
+        it "Insertar Menus en Array" do
+            @array = []
+            @array << @menu1
+            @array << @menu2
+            @array << @menu3
+            @array << @menu4
+            @array << @menu5
+            @array << @menu6
+            @array << @menu7
+            @array << @menu8
+            @array << @menu9
+            @array << @menu10
+            expect(@array[0]).to eq(@menu1)
+            expect(@array[1]).to eq(@menu2)
+            expect(@array[2]).to eq(@menu3)
+            expect(@array[3]).to eq(@menu4)
+            expect(@array[4]).to eq(@menu5)
+            expect(@array[5]).to eq(@menu6)
+            expect(@array[6]).to eq(@menu7)
+            expect(@array[7]).to eq(@menu8)
+            expect(@array[8]).to eq(@menu9)
+            expect(@array[9]).to eq(@menu10)
+        end
+        
+        it "Insertar Paciente en Lista" do
+            @lista1.insertar_tail(@paciente1)
+            expect(@lista1.size).to eq(1)
+            @lista1.insertar_tail(@paciente2)
+            expect(@lista1.size).to eq(2)
+            @lista1.insertar_tail(@paciente3)
+            expect(@lista1.size).to eq(3)
+            @lista1.insertar_tail(@paciente4)
+            expect(@lista1.size).to eq(4)
+            @lista1.insertar_tail(@paciente5)
+            expect(@lista1.size).to eq(5)
+            @lista1.insertar_tail(@paciente6)
+            expect(@lista1.size).to eq(6)
+            @lista1.insertar_tail(@paciente7)
+            expect(@lista1.size).to eq(7)
+            @lista1.insertar_tail(@paciente8)
+            expect(@lista1.size).to eq(8)
+            @lista1.insertar_tail(@paciente9)
+            expect(@lista1.size).to eq(9)
+            @lista1.insertar_tail(@paciente10)
+            expect(@lista1.size).to eq(10)
+        end
+    end
 end
