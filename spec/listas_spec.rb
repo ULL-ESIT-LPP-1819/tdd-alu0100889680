@@ -73,7 +73,6 @@ RSpec.describe Lista do
         expect(@elemento3.sal).to be <= 6
         @elemento4 = @lista.extraer_head
         expect(@elemento4.sal).to be <= 6
-
     end
   end
 end
