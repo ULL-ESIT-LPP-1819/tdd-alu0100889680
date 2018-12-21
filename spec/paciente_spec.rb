@@ -412,7 +412,6 @@ RSpec.describe Paciente do
             @lista_nueva = @lista1.sort
             expect(@lista_nueva).to eq([@p7,@p3,@p4,@p2,@p6,@p9,@p8,@p5,@p1,@p10])
         end
-
         
     end
 end
