@@ -435,5 +435,20 @@ RSpec.describe Paciente do
             # El each no ordena bien. La expectativa esta modificada para que pase
             expect(@lista_nueva).to eq([@p10,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9])
         end
+        
+        it "Benchmark" do
+           
+           n = 1500
+
+			Benchmark.bm do |x|
+				x.report("Array for:") {  n.times{@array.sort_for} }
+        		x.report("Array each:") {  n.times{@array.sort_each} }
+        		x.report("Array sort:") {  n.times{@array.sort} }
+
+				x.report("Lista for:") {  n.times{@lista.sort_for} }
+                x.report("Lista each:") {  n.times{@lista.sort_each} }
+                x.report("Lista sort:") {  n.times{@lista.sort} }
+            end
+        end
     end
 end
