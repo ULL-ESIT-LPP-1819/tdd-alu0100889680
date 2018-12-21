@@ -4,7 +4,7 @@ require "infonutricional/infonutricional_clase.rb"
 require "infonutricional/lista.rb"
 require "infonutricional/individuo.rb"
 require "benchmark"
-require ’coveralls’
+require "coveralls"
 Coveralls.wear!
 
 
