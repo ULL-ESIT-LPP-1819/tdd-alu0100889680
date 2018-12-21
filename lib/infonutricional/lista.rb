@@ -20,7 +20,7 @@ class Lista
     include Enumerable
     
     # Método que permite recorrer la lista
-    def each
+    def each(&block)
         i = @tail
         f = @size
         k = 0
@@ -82,5 +82,32 @@ class Lista
             return saliente.value
         end 
     end
+    
+    def sort_for
+        @aux = self.map { |x| x }
+        
+            for x in 0..@aux.length-1
+                for y in 0..@aux.length-2-x
+                    if ( @aux[y] > @aux[y+1] )
+                        @aux[y], @aux[y+1] = @aux[y+1], @aux[y]
+                    end
+                end
+            end
+        return @aux
+    end
 
+    def sort_each
+        @aux = self.map { |x| x}
+        @pos = 0
+        
+        @aux.each do |x|
+            @pos = @pos + 1
+            @aux.each do |y|
+                if (x>y)
+                    x, y = y, x
+                end
+            end
+        end
+    end
+    
 end

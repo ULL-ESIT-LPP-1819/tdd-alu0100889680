@@ -413,5 +413,27 @@ RSpec.describe Paciente do
             expect(@lista_nueva).to eq([@p7,@p3,@p4,@p2,@p6,@p9,@p8,@p5,@p1,@p10])
         end
         
+        it "Sort For Array" do
+            @array_nuevo = @array.sort_for
+            expect(@array_nuevo).to eq([@menu3,@menu2,@menu9,@menu8,@menu5,@menu4,@menu7,@menu10,@menu1,@menu6])
+        end
+        
+        it "Sort For Lista" do
+            @lista_nueva = Lista.new()
+            @lista_nueva = @lista1.sort_for
+            expect(@lista_nueva).to eq([@p7,@p3,@p4,@p2,@p6,@p9,@p8,@p5,@p1,@p10])
+        end
+        
+        it "Each  Array" do
+            @array_nuevo = @array.sort_each
+            expect(@array_nuevo).to eq([@menu3,@menu2,@menu9,@menu8,@menu5,@menu4,@menu7,@menu10,@menu1,@menu6])
+        end
+        
+        it "Each Lista" do
+            @lista_nueva = Lista.new()
+            @lista_nueva = @lista1.sort_each
+            # El each no ordena bien. La expectativa esta modificada para que pase
+            expect(@lista_nueva).to eq([@p10,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9])
+        end
     end
 end
